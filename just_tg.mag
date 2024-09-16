@@ -1,0 +1,115 @@
+magic
+tech sky130A
+timestamp 1726407028
+<< error_p >>
+rect -95 72 59 228
+rect -42 -8 -8 34
+rect 7 -8 41 34
+<< nwell >>
+rect -95 72 59 228
+<< nmos >>
+rect -8 -8 7 34
+<< pmos >>
+rect -8 92 7 210
+<< ndiff >>
+rect -42 25 -8 34
+rect -42 8 -36 25
+rect -19 8 -8 25
+rect -42 -8 -8 8
+rect 7 26 41 34
+rect 7 9 16 26
+rect 33 9 41 26
+rect 7 -8 41 9
+<< pdiff >>
+rect -42 191 -8 210
+rect -42 174 -35 191
+rect -18 174 -8 191
+rect -42 157 -8 174
+rect -42 140 -35 157
+rect -18 140 -8 157
+rect -42 123 -8 140
+rect -42 106 -36 123
+rect -19 106 -8 123
+rect -42 92 -8 106
+rect 7 191 41 210
+rect 7 174 17 191
+rect 34 174 41 191
+rect 7 157 41 174
+rect 7 140 17 157
+rect 34 140 41 157
+rect 7 123 41 140
+rect 7 106 17 123
+rect 34 106 41 123
+rect 7 92 41 106
+<< ndiffc >>
+rect -36 8 -19 25
+rect 16 9 33 26
+<< pdiffc >>
+rect -35 174 -18 191
+rect -35 140 -18 157
+rect -36 106 -19 123
+rect 17 174 34 191
+rect 17 140 34 157
+rect 17 106 34 123
+<< poly >>
+rect -8 210 7 223
+rect -8 84 7 92
+rect -92 75 7 84
+rect -92 58 -84 75
+rect -67 68 7 75
+rect -67 58 -59 68
+rect -92 52 -59 58
+rect -8 34 7 47
+rect -8 -27 7 -8
+rect -17 -33 16 -27
+rect -17 -50 -9 -33
+rect 8 -50 16 -33
+rect -17 -55 16 -50
+<< polycont >>
+rect -84 58 -67 75
+rect -9 -50 8 -33
+<< locali >>
+rect -42 191 -11 210
+rect -42 174 -35 191
+rect -18 174 -11 191
+rect -42 157 -11 174
+rect -42 140 -35 157
+rect -18 140 -11 157
+rect -42 123 -11 140
+rect -42 106 -36 123
+rect -19 106 -11 123
+rect -92 75 -59 80
+rect -92 58 -84 75
+rect -67 58 -59 75
+rect -92 52 -59 58
+rect -42 25 -11 106
+rect -42 8 -36 25
+rect -19 8 -11 25
+rect -42 -8 -11 8
+rect 10 191 41 203
+rect 10 174 17 191
+rect 34 174 41 191
+rect 10 157 41 174
+rect 10 140 17 157
+rect 34 140 41 157
+rect 10 123 41 140
+rect 10 106 17 123
+rect 34 106 41 123
+rect 10 26 41 106
+rect 10 9 16 26
+rect 33 9 41 26
+rect 10 -8 41 9
+rect -17 -33 16 -27
+rect -17 -50 -9 -33
+rect 8 -50 16 -33
+rect -17 -55 16 -50
+<< labels >>
+rlabel locali -42 56 -42 56 7 A
+port 1 w
+rlabel locali 41 61 41 61 3 Y
+port 4 e
+rlabel locali -17 -42 -17 -42 7 clk
+port 2 w
+rlabel locali -92 66 -92 66 7 clk_bar
+port 3 w
+<< end >>

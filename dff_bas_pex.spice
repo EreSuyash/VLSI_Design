@@ -1,0 +1,121 @@
+* NGSPICE file created from dff_n.ext - technology: sky130A
+
+.subckt invx vin vdd vss vout
+X0 vout vin vss vss sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.1428 ps=1.52 w=0.42 l=0.15
+**devattr s=1428,152 d=1428,152
+X1 vout vin vdd vdd sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=0.4012 ps=3.04 w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+C0 vin vdd 0.091953f
+C1 vout vdd 0.128216f
+C2 vout vin 0.05109f
+C3 vout vss 0.17184f
+C4 vin vss 0.2257f
+C5 vdd vss 0.544729f
+.ends
+
+.subckt just_tg A clk clk_bar Y w_n95_72# SUB
+X0 Y clk A SUB sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.1428 ps=1.52 w=0.42 l=0.15
+**devattr s=1428,152 d=1428,152
+X1 Y clk_bar A w_n95_72# sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=0.4012 ps=3.04 w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+C0 clk_bar w_n95_72# 0.078384f
+C1 clk w_n95_72# 0.001004f
+C2 clk clk_bar 0.014495f
+C3 Y w_n95_72# 0.008f
+C4 Y clk_bar 0.014712f
+C5 Y clk 0.012141f
+C6 A w_n95_72# 0.014559f
+C7 A clk_bar 0.055226f
+C8 clk A 0.011869f
+C9 Y A 0.157105f
+C10 clk SUB 0.16619f
+C11 Y SUB 0.108291f
+C12 A SUB 0.094098f
+C13 clk_bar SUB 0.162964f
+C14 w_n95_72# SUB 0.288288f
+.ends
+
+.subckt dff_n D CLK Vdd vss Q
+Xinvx_0 invx_0/vin Vdd vss invx_4/vin invx
+Xinvx_1 invx_4/vin Vdd vss just_tg_1/A invx
+Xinvx_2 D Vdd vss just_tg_0/A invx
+Xinvx_3 CLK Vdd vss invx_3/vout invx
+Xinvx_4 invx_4/vin Vdd vss invx_4/vout invx
+Xjust_tg_0 just_tg_0/A CLK invx_3/vout invx_0/vin Vdd vss just_tg
+Xjust_tg_1 just_tg_1/A invx_3/vout CLK invx_0/vin Vdd vss just_tg
+X0 Q a_737_n247# Vdd Vdd sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=1.4042 ps=10.64 w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+X1 a_737_n247# invx_3/vout invx_4/vout vss sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.2856 ps=3.04 w=0.42 l=0.15
+**devattr s=1428,152 d=1428,152
+X2 Q a_737_n247# vss vss sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.4998 ps=5.32 w=0.42 l=0.15
+**devattr s=1428,152 d=1428,152
+X3 a_882_47# CLK a_737_n247# vss sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.1428 ps=1.52 w=0.42 l=0.15
+**devattr s=1428,152 d=1428,152
+X4 a_882_47# Q Vdd Vdd sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=1.4042 ps=10.64 w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+X5 a_737_n247# CLK invx_4/vout Vdd sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=0.8024 ps=6.08 w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+X6 a_882_47# invx_3/vout a_737_n247# Vdd sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=0.4012 ps=3.04 w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+X7 a_882_47# Q vss vss sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.4998 ps=5.32 w=0.42 l=0.15
+**devattr s=1428,152 d=1428,152
+C0 a_737_n247# invx_3/vout 0.149241f
+C1 invx_3/vout D 0.015006f
+C2 Q Vdd 0.316459f
+C3 CLK just_tg_1/A 0.106095f
+C4 invx_0/vin invx_4/vin 0.016915f
+C5 just_tg_1/A just_tg_0/A 0.001198f
+C6 Q invx_3/vout 0.001115f
+C7 CLK just_tg_0/A 0.002264f
+C8 a_882_47# invx_4/vout 0.001198f
+C9 a_737_n247# CLK 0.16773f
+C10 CLK D 0.002618f
+C11 D just_tg_0/A 1.63e-19
+C12 Vdd invx_4/vout 0.15521f
+C13 Vdd invx_4/vin 0.138367f
+C14 invx_3/vout invx_4/vout 0.026624f
+C15 Q CLK 0.009399f
+C16 invx_3/vout invx_4/vin 0.012486f
+C17 invx_0/vin Vdd 0.356743f
+C18 Q a_737_n247# 0.066529f
+C19 invx_0/vin invx_3/vout 0.183688f
+C20 a_882_47# Vdd 0.234586f
+C21 invx_4/vout just_tg_1/A 0.026056f
+C22 invx_4/vin just_tg_1/A 0.054064f
+C23 a_882_47# invx_3/vout 0.077567f
+C24 invx_4/vout CLK 0.120066f
+C25 invx_4/vin CLK 0.185088f
+C26 a_737_n247# invx_4/vout 0.303909f
+C27 invx_0/vin just_tg_1/A 0.006736f
+C28 a_737_n247# invx_4/vin -9.54e-25
+C29 Vdd invx_3/vout 0.760501f
+C30 invx_0/vin CLK 0.133117f
+C31 invx_0/vin just_tg_0/A 0.030926f
+C32 invx_0/vin D 5.42e-20
+C33 a_882_47# CLK 0.012396f
+C34 Q invx_4/vout 0.001998f
+C35 Vdd just_tg_1/A 0.233472f
+C36 a_882_47# a_737_n247# 0.163334f
+C37 Vdd CLK 0.775456f
+C38 invx_3/vout just_tg_1/A 0.011156f
+C39 Vdd just_tg_0/A 0.053905f
+C40 invx_3/vout CLK 0.384431f
+C41 a_737_n247# Vdd 0.442358f
+C42 Vdd D 0.019799f
+C43 invx_3/vout just_tg_0/A 0.055764f
+C44 a_882_47# Q 0.057872f
+C45 invx_4/vin invx_4/vout 0.004058f
+C46 Q vss 0.383167f
+C47 a_882_47# vss 0.449402f
+C48 a_737_n247# vss 0.366113f
+C49 CLK vss 2.952297f
+C50 invx_3/vout vss 1.892469f
+C51 invx_0/vin vss 0.349159f
+C52 just_tg_1/A vss 0.244446f
+C53 Vdd vss 5.951647f
+C54 just_tg_0/A vss 0.161916f
+C55 invx_4/vout vss 0.236168f
+C56 invx_4/vin vss 1.027489f
+C57 D vss 0.194308f
+.ends
+
