@@ -1,0 +1,48 @@
+* Transmission Gate Simulation
+
+.lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+* The voltage sources:
+Vdd vdd gnd DC 1.8
+* DC sweep
+VA_dc A_dc gnd DC 0
+Vclk_dc clk_dc gnd DC 1.8
+
+* Pulse for transient analysis
+VA_tr A_tr gnd PULSE(1.8 0 0p 250p 250p 5n 10n)
+Vclk_tr clk_tr gnd PULSE(0 1.8 0p 10p 10p 3n 6n)
+Vclk_bar clk_bar gnd PULSE(1.8 0 0p 10p 10p 3n 6n)
+
+* Transmission Gate instances for DC analysis
+*Xtg_dc A_dc vdd gnd clk_dc y_dc tg
+* Transmission Gate instances for transient analysis 
+Xtg_tr A_tr clk_tr clk_bar y_tr tg_port
+
+.subckt tg_port A ctrl ctrl_bar Y
+X0 Y ctrl A SUB sky130_fd_pr__nfet_01v8 ad=0.1344 pd=1.48 as=0.1344 ps=1.48 w=0.42 l=0.15
+**devattr s=1344,148 d=1344,148
+X1 Y ctrl_bar A w_n58_74# sky130_fd_pr__pfet_01v8 ad=0.3776 pd=3 as=0.3776 ps=3 w=1.18 l=0.15
+**devattr s=3776,300 d=3776,300
+.ends
+
+* Transient analysis command:
+.tran 1ps 12ns
+
+.control
+
+run
+
+* Transient analysis results
+meas tran trise trig v(y_tr) val=0.36 rise=1 targ v(y_tr) val=1.44 rise=1
+meas tran tfall trig v(y_tr) val=1.44 fall=1 targ v(y_tr) val=0.36 fall=1
+meas tran tphl trig v(A_tr) val=0.9 rise=1 targ v(y_tr) val=0.9 fall=1
+meas tran tplh trig v(A_tr) val=0.9 fall=1 targ v(y_tr) val=0.9 rise=1
+let tp = (tphl + tplh) / 2
+print trise tfall tphl tplh tp
+
+* Plot Transmission Gate Response and Clock Pulse
+plot v(A_tr) v(y_tr) v(clk_tr) title "Transmission Gate Transient Response with Clock Pulse" xlabel "Time (s)" ylabel "Voltage (V)"
+
+*v(A_tr) v(y_tr) v(clk_tr)
+.endc
+

@@ -1,0 +1,9 @@
+* NGSPICE file created from tg_port.ext - technology: sky130A
+
+.subckt tg_port A ctrl ctrl_bar Y
+X0 Y ctrl A SUB sky130_fd_pr__nfet_01v8 ad=0.1344 pd=1.48 as=0.1344 ps=1.48 w=0.42 l=0.15
+**devattr s=1344,148 d=1344,148
+X1 Y ctrl_bar A w_n58_74# sky130_fd_pr__pfet_01v8 ad=0.3776 pd=3 as=0.3776 ps=3 w=1.18 l=0.15
+**devattr s=3776,300 d=3776,300
+.ends
+
