@@ -1,0 +1,3 @@
+invx_port -> not symmetric, rise time and fall time in pico seconds bu rise time is around 6 and fall time 4
+invx_sub_port -> symmetric, both around 8 ps
+invx_sub -> symmetric, both around 8 ps

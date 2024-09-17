@@ -1,0 +1,135 @@
+magic
+tech sky130A
+timestamp 1726590994
+<< error_p >>
+rect -60 71 59 225
+rect -44 -18 -8 24
+rect 7 -18 41 24
+<< nwell >>
+rect -60 71 59 225
+<< nmos >>
+rect -8 -18 7 24
+<< pmos >>
+rect -8 89 7 207
+<< ndiff >>
+rect -44 15 -8 24
+rect -44 -2 -36 15
+rect -19 -2 -8 15
+rect -44 -18 -8 -2
+rect 7 16 41 24
+rect 7 -1 16 16
+rect 33 -1 41 16
+rect 7 -18 41 -1
+<< pdiff >>
+rect -42 188 -8 207
+rect -42 171 -35 188
+rect -18 171 -8 188
+rect -42 154 -8 171
+rect -42 137 -35 154
+rect -18 137 -8 154
+rect -42 120 -8 137
+rect -42 103 -36 120
+rect -19 103 -8 120
+rect -42 89 -8 103
+rect 7 188 41 207
+rect 7 171 17 188
+rect 34 171 41 188
+rect 7 154 41 171
+rect 7 137 17 154
+rect 34 137 41 154
+rect 7 120 41 137
+rect 7 103 17 120
+rect 34 103 41 120
+rect 7 89 41 103
+<< ndiffc >>
+rect -36 -2 -19 15
+rect 16 -1 33 16
+<< pdiffc >>
+rect -35 171 -18 188
+rect -35 137 -18 154
+rect -36 103 -19 120
+rect 17 171 34 188
+rect 17 137 34 154
+rect 17 103 34 120
+<< poly >>
+rect -8 207 7 220
+rect -8 73 7 89
+rect -41 65 7 73
+rect -41 48 -33 65
+rect -16 48 7 65
+rect -41 40 7 48
+rect -8 24 7 40
+rect -8 -31 7 -18
+<< polycont >>
+rect -33 48 -16 65
+<< locali >>
+rect -60 219 -53 236
+rect -36 219 -8 236
+rect 9 219 36 236
+rect 53 219 59 236
+rect -42 188 -11 219
+rect -42 171 -35 188
+rect -18 171 -11 188
+rect -42 154 -11 171
+rect -42 137 -35 154
+rect -18 137 -11 154
+rect -42 120 -11 137
+rect -42 103 -36 120
+rect -19 103 -11 120
+rect -42 95 -11 103
+rect 10 188 41 200
+rect 10 171 17 188
+rect 34 171 41 188
+rect 10 154 41 171
+rect 10 137 17 154
+rect 34 137 41 154
+rect 10 120 41 137
+rect 10 103 17 120
+rect 34 103 41 120
+rect -41 65 -8 73
+rect -41 48 -33 65
+rect -16 48 -8 65
+rect -41 40 -8 48
+rect -44 15 -11 22
+rect -44 -2 -36 15
+rect -19 -2 -11 15
+rect -44 -18 -11 -2
+rect 10 16 41 103
+rect 10 -1 16 16
+rect 33 -1 41 16
+rect 10 -18 41 -1
+rect -42 -35 -11 -18
+rect -60 -52 -52 -35
+rect -35 -52 -8 -35
+rect 9 -52 36 -35
+rect 53 -52 59 -35
+<< viali >>
+rect -53 219 -36 236
+rect -8 219 9 236
+rect 36 219 53 236
+rect -52 -52 -35 -35
+rect -8 -52 9 -35
+rect 36 -52 53 -35
+<< metal1 >>
+rect -60 236 59 239
+rect -60 219 -53 236
+rect -36 219 -8 236
+rect 9 219 36 236
+rect 53 219 59 236
+rect -60 216 59 219
+rect -60 -35 59 -32
+rect -60 -52 -52 -35
+rect -35 -52 -8 -35
+rect 9 -52 36 -35
+rect 53 -52 59 -35
+rect -60 -55 59 -52
+<< labels >>
+rlabel locali -41 57 -41 57 7 Vin
+port 1 w
+rlabel metal1 -60 -43 -60 -43 7 Vss
+port 3 w
+rlabel locali 41 51 41 51 3 Vout
+port 4 e
+rlabel metal1 -60 227 -60 227 7 Vdd
+port 2 w
+<< end >>

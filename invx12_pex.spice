@@ -1,0 +1,10 @@
+* NGSPICE file created from Inverter_copy.ext - technology: sky130A
+
+X0 vout vin gnd gnd sky130_fd_pr__nfet_01v8 ad=0.1428 pd=1.52 as=0.1428 ps=1.52 w=0.42 l=0.15
+X1 vout vin vdd vdd sky130_fd_pr__pfet_01v8 ad=0.4012 pd=3.04 as=0.4012 ps=3.04 w=1.18 l=0.15
+C0 vdd vin 0.102392f
+C1 vdd vout 0.136622f
+C2 vout vin 0.05109f
+C3 vout gnd 0.163688f
+C4 vin gnd 0.22212f
+C5 vdd gnd 0.673536f

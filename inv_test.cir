@@ -1,0 +1,76 @@
+* CMOS Inverter Simulation for INVX2
+.lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+* The voltage sources:
+Vdd vdd gnd DC 1.8
+* DC sweep
+*Vin_dc in_dc gnd DC 0
+* Pulse for transient analysis
+Vin_tr in_tr gnd PULSE(0 1.8 0p 20p 20p 1n 2n)
+
+* Inverter instances for DC analysis
+*Xnot2_dc in_dc vdd gnd out_dc invx2
+*Xnot1_dc out_dc vdd gnd out2_dc invx1
+
+* Inverter instances for transient analysis
+*Xnot2_tr in_tr vdd gnd out_tr invx2
+Xnot1_tr in_tr vdd gnd out2_tr invx_port
+
+* Subcircuit definitions
+.subckt invx_port Vin Vdd Vss Vout
+X0 Vout Vin Vss SUB sky130_fd_pr__nfet_01v8 ad=0.1428u pd=1.52u as=0.1512u ps=1.56u w=0.42 l=0.15
+**devattr s=1512,156 d=1428,152
+X1 Vout Vin Vdd Vdd sky130_fd_pr__pfet_01v8 ad=0.4012u pd=3.04u as=0.4012u ps=3.04u w=1.18 l=0.15
+**devattr s=4012,304 d=4012,304
+C0 Vdd Vin 0.039957f
+C1 Vss Vout 0.069381f
+C2 Vdd Vss 0.027718f
+C3 Vss Vdd 0.006552f
+C4 Vss Vin 0.042436f
+C5 Vdd Vout 0.117896f
+C6 Vdd Vout 0.008902f
+C7 Vdd Vdd 0.021564f
+C8 Vin Vout 0.05109f
+C9 Vdd Vin 0.046501f
+C10 Vss Vss 0.188035f
+C11 Vout Vss 0.103776f
+C12 Vdd Vss 0.196259f
+C13 Vin Vss 0.188644f
+C14 Vdd Vss 0.219912f
+.ends
+
+
+* DC sweep simulation command:
+*.dc Vin_dc 0 1.8 0.001
+
+* Transient analysis command:
+.tran 1ps 10ns
+
+.control
+
+run
+
+* DC analysis results
+*let slope = deriv(v(out2_dc))
+*let v_10 = 0.1 * 1.8
+*let v_90 = 0.9 * 1.8
+*meas dc V_IL FIND v(in_dc) WHEN v(out2_dc)=v_90
+*meas dc V_IH FIND v(in_dc) WHEN v(out2_dc)=v_10
+*meas dc VM FIND v(in_dc) WHEN v(in_dc)=v(out2_dc)
+*let nmh = 1.8 - V_IH
+*let nml = V_IL
+*print V_IL V_IH VM nmh nml
+*plot v(out2_dc) vs v(in_dc) title "INVX2 Transfer Characteristic" xlabel "Input Voltage (V)" ylabel "Output Voltage (V)"
+*plot slope vs v(in_dc) title "INVX2 Slope" xlabel "Input Voltage (V)" ylabel "Slope (dV_out/dV_in)"
+
+** Transient analysis results
+meas tran trise trig v(out2_tr) val=0.36 rise=1 targ v(out2_tr) val=1.44 rise=1
+meas tran tfall trig v(out2_tr) val=1.44 fall=1 targ v(out2_tr) val=0.36 fall=1
+meas tran tphl trig v(in_tr) val=0.9 rise=1 targ v(out2_tr) val=0.9 fall=1
+meas tran tplh trig v(in_tr) val=0.9 fall=1 targ v(out2_tr) val=0.9 rise=1
+let tp = (tphl + tplh) / 2
+print trise tfall tphl tplh tp
+plot v(in_tr) v(out2_tr) title "INVX2 Transient Response" xlabel "Time (s)" ylabel "Voltage (V)"
+
+.endc
+.end
